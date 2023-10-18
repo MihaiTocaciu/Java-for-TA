@@ -43,7 +43,7 @@ class Car implements Serializable {
 
 public class CarAssemblyLine {
     public static void main(String[] args) {
-        // Create car components
+
         CarComponent[] components = {
                 new CarComponent("Tire", 2),
                 new CarComponent("Tire", 2),
@@ -80,7 +80,7 @@ public class CarAssemblyLine {
         try (FileOutputStream fileOutputStream = new FileOutputStream("car.ser");
              ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream)) {
             objectOutputStream.writeObject(car);
-            System.out.println("Car is complete and saved as car.ser.");
+            System.out.println("Car assembly is complete and saved as car.ser.");
         } catch (Exception e) {
             e.printStackTrace();
         }
