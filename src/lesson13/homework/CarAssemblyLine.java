@@ -28,7 +28,7 @@ class CarComponent implements Serializable {
     }
 }
 
-// Define a Car class to represent a car made up of components
+
 class Car implements Serializable {
     private CarComponent[] components;
 
@@ -58,19 +58,18 @@ public class CarAssemblyLine {
                 new CarComponent("Frame", 5)
         };
 
-        // Create a car using the components
+
         Car car = new Car(components);
 
-        // Create a fixed-size thread pool with a limit of 3 threads to build components concurrently
         ExecutorService executorService = Executors.newFixedThreadPool(3);
 
-        // Assemble the car components concurrently using the thread pool
+
         for (int i = 0; i < components.length; i++) {
             final int componentNumber = i + 1;
             executorService.submit(() -> car.assemble(componentNumber));
         }
 
-        // Shutdown the thread pool and wait for all tasks to complete
+
         executorService.shutdown();
         try {
             executorService.awaitTermination(Long.MAX_VALUE, TimeUnit.NANOSECONDS);
